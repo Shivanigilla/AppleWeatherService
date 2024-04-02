@@ -13,7 +13,6 @@ public class OpenWeatherMapResponse {
         this.main = main;
     }
 
-    // Define inner class for "main" object in the response
     public static class Main {
         @JsonProperty("temp")
         private double temp;

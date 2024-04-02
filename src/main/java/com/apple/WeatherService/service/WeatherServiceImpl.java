@@ -29,7 +29,7 @@ public class WeatherServiceImpl implements WeatherService{
     private final CacheManager cacheManager;
 
     @Override
-    @Cacheable(value = "weatherCache")
+    @Cacheable(value = WEATHER_CACHE)
     public WeatherData getWeatherByZipcode(String zipcode) {
         String url = apiUrl + "?zip=" + zipcode + "&appid=" + apiKey + "&units=metric"; // Assuming metric units for temperature
 
@@ -59,7 +59,7 @@ public class WeatherServiceImpl implements WeatherService{
 
 
     public WeatherData getCachedWeather(String zipcode) {
-        Cache weatherCache = cacheManager.getCache(CACHE_NAME); // Get the cache instance
+        Cache weatherCache = cacheManager.getCache(WEATHER_CACHE); // Get the cache instance
         if (weatherCache != null) {
             Cache.ValueWrapper valueWrapper = weatherCache.get(zipcode); // Check if the data for the given zipcode is cached
             return (valueWrapper == null )?null: (WeatherData) valueWrapper.get();

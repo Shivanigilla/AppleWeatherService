@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.apple.WeatherService.constant.AppConstants.CACHE_NAME;
+import static com.apple.WeatherService.constant.AppConstants.WEATHER_CACHE;
 
 @Configuration
 @EnableCaching
@@ -19,7 +19,7 @@ public class CaffeineCacheConfig {
     @Bean
     public CacheManager cacheManager(Caffeine caffeine) {
         CaffeineCacheManager cacheManager = new
-                CaffeineCacheManager(CACHE_NAME);
+                CaffeineCacheManager(WEATHER_CACHE);
         cacheManager.setCaffeine(caffeine);
         return cacheManager;
     }
